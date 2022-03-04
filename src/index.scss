@@ -1,0 +1,111 @@
+$primaryColor:#393E46;
+$secondaryColor:#5C6B73;
+$operatorColor:#720026;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+    font-family: "Fira Code",san-serif;
+    transition: all .3s;
+}
+body{
+    background-color: #666262;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    overflow: hidden;
+    user-select: none;
+}
+h1 {
+    padding: 10px;
+    text-align: center;
+    font-size: 60px;
+    background: -webkit-linear-gradient(rgb(165, 164, 164), $operatorColor,$primaryColor);
+    user-select: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calculator{
+    max-width: 450px;
+    width:450px;
+    height: auto;
+    background-color:#bfb7b7;
+    border-radius:15px;
+    overflow: hidden;
+    box-shadow:0 5px 50px 0px rgba(0, 0, 0, 0.4);
+
+    .display{
+        text-align: right;
+        background-color:$primaryColor;
+        width: 100%;
+        padding:15px;
+        user-select: none;
+        color:#fff;
+        font-size: 24px;
+        font-weight: 400;
+        span{
+            font-size: 18px;
+            margin-right: 5px;
+            color:#5C6B73;
+        }
+    }
+    button{
+        appearance:none;
+        border:none;
+        color:#fff;
+        font-size: 18px;
+        outline:none;
+        padding:20px;
+        cursor:pointer;
+        transition: .4s;
+        &:hover{
+            opacity: .7;
+        }
+    }
+    .button {
+        .operator {
+            display: flex;
+            flex-wrap:wrap;
+            button {
+                flex: 1 1 33.333%;
+                background-color: $operatorColor;
+                font-weight: 800;
+            }
+        }
+        .ditgits{
+            display: flex;
+            flex-wrap: wrap;
+            button{
+            flex:1 1 33.333%;
+            background-color:$primaryColor;
+            }
+        }
+    }
+    
+
+}
+@media screen and(max-width:480px) {
+    body {
+        padding: 0 10px;
+    }
+
+    .calculator {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media screen and(max-width:250px) {
+
+    .calculator {
+        display: none;
+
+    }
+}
+
