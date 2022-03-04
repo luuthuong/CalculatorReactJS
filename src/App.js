@@ -4,7 +4,7 @@ function App() {
 
 	const [cal, setCal] = useState('');
 	const [rs, setRs] = useState('');
-	let calRef=useRef('0');
+	let rsRef=useRef('');
 	// useEffect(() => {
 	// 	// console.log('Current:',cal);
 	// }, [cal])
@@ -21,9 +21,15 @@ function App() {
 	}
 	const equalCalc=()=>{
 		setCal(eval(cal).toString());
+		rsRef.current=rs;
+		setCal('0');
 		setRs('')
 	}
 	const deleteCalc = () => {
+		rsRef.current='0';
+		setCal(' ');
+		console.log(rsRef.current);
+		console.log('delete',cal);
 		if (cal !== '') {
 			let newCal = cal.slice(0, -1);
 			setCal(newCal);
@@ -33,7 +39,8 @@ function App() {
 		}
 	}
 	const clearCal = () => {
-		setCal('');
+		rsRef.current='';
+		setCal('0');
 		setRs('');
 	}
 	
@@ -58,7 +65,7 @@ function App() {
 		<h1>CALCULATOR</h1>
 		<div className="calculator">
 			<div className="display">
-				{rs?<span>{rs}</span>:''}{cal||'0'}
+				{rs?<span>{rs}</span>:''}{cal||rsRef.current}
 			</div>
 			<div className="button">
 				<div className="operator">
@@ -68,7 +75,6 @@ function App() {
 					<button onClick={()=>calcOperator('/')}> / </button>
 					<button onClick={()=>clearCal()}> C </button>
 					<button onClick={()=>deleteCalc()}> DEL </button>
-
 				</div>
 				<div className="ditgits">
 					{createditgits()}
